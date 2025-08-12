@@ -34,7 +34,7 @@
 #         "US": ["pink", "green"]
 #     }
 # }
-# brand["number_stores"] = 3
+# brand["number_stores"] = 2
 
 
 
