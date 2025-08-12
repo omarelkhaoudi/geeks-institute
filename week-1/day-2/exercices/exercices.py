@@ -4,7 +4,7 @@
 # result = dict(zip(keys,values))
 # print(result)
 
-# exercice2
+# exercice2 (1ère méthode)
 # family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
 # total = 0
 
@@ -19,3 +19,7 @@
 #     print(f"{nom} doit payer {prix} $")
 #     total += prix
 # print(f"Coût total pour la famille : {total} $")
+
+# exercice3
+
+
