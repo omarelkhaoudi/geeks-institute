@@ -50,25 +50,25 @@
 
 # step4
 
-class Farm:
-    def __init__(self, farm_name):
-        self.name = farm_name
-        self.animals = {}
+# class Farm:
+#     def __init__(self, farm_name):
+#         self.name = farm_name
+#         self.animals = {}
 
-    def add_animal(self, animal_type, count=1):
-        if animal_type in self.animals:
-            self.animals[animal_type] += count
-        else:
-            self.animals[animal_type] = count
+#     def add_animal(self, animal_type, count=1):
+#         if animal_type in self.animals:
+#             self.animals[animal_type] += count
+#         else:
+#             self.animals[animal_type] = count
 
-    def get_info(self):
-        output = f"{self.name}'s Farm\n"
-        output += "-" * 30 + "\n"
-        for animal, count in self.animals.items():
-            output += f"{animal:<10} : {count:>3}\n"
-        output += "-" * 30 + "\n"
-        output += "E-I-E-I-O!\n"
-        return output
+#     def get_info(self):
+#         output = f"{self.name}'s Farm\n"
+#         output += "-" * 30 + "\n"
+#         for animal, count in self.animals.items():
+#             output += f"{animal:<10} : {count:>3}\n"
+#         output += "-" * 30 + "\n"
+#         output += "E-I-E-I-O!\n"
+#         return output
 
 # step5
 
