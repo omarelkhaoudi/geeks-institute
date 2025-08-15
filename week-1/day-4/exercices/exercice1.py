@@ -1,5 +1,3 @@
-# exercice1
-
 class Pets():
     def __init__(self, animals):
         self.animals = animals
@@ -7,7 +5,6 @@ class Pets():
     def walk(self):
         for animal in self.animals:
             print(animal.walk())
-
 class Cat():
     is_lazy = True
 
@@ -17,15 +14,12 @@ class Cat():
 
     def walk(self):
         return f'{self.name} is just walking around'
-
 class Bengal(Cat):
     def sing(self, sounds):
         return f'{sounds}'
-
 class Chartreux(Cat):
     def sing(self, sounds):
         return f'{sounds}'
-
 class Siamese(Cat):
     def sing(self, sounds):
         return f'{sounds}'
