@@ -1,40 +1,5 @@
-# exercice3 # file1 # dog.py
-
-class Dog:
-    def __init__(self, name, age, weight):
-        self.name = name
-        self.age = age
-        self.weight = weight
-
-    def bark(self):
-        return f"{self.name} is barking"
-
-    def run_speed(self):
-        return (self.weight / self.age) * 10
-
-    def fight(self, other_dog):
-        self_power = self.run_speed() * self.weight
-        other_power = other_dog.run_speed() * other_dog.weight
-
-        if self_power > other_power:
-            return f"{self.name} won the fight!"
-        elif self_power < other_power:
-            return f"{other_dog.name} won the fight!"
-        else:
-            return "It's a tie!"
-
-# file2 # petdog.py
-
+from exercice2 import Dog
 import random
-
-class Dog:
-    def __init__(self, name, age, weight):
-        self.name = name
-        self.age = age
-        self.weight = weight
-
-    def bark(self):
-        return f"{self.name} barks loudly!"
 
 class PetDog(Dog):
     def __init__(self, name, age, weight, trained=False):

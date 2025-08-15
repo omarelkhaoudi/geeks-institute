@@ -1,26 +1,4 @@
-# exercice5
-
-class Family:
-    def __init__(self, last_name, members):
-        self.last_name = last_name
-        self.members = members
-
-    def born(self, **kwargs):
-        self.members.append(kwargs)
-        print(f"Congratulations to the {self.last_name} family on the birth of {kwargs.get('name', 'a new member')}!")
-
-    def is_18(self, name):
-        for member in self.members:
-            if member['name'].lower() == name.lower():
-                return member['age'] >= 18
-        print(f"No member named {name} found.")
-        return False
-
-    def family_presentation(self):
-        print(f"Family: {self.last_name}")
-        for member in self.members:
-            print(", ".join([f"{key.capitalize()}: {value}" for key, value in member.items()]))
-
+from exercice4 import Family
 class TheIncredibles(Family):
     def use_power(self, name):
         for member in self.members:

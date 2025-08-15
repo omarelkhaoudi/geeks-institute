@@ -1,5 +1,3 @@
-# exercice4
-
 class Family:
     def __init__(self, last_name, members):
         self.last_name = last_name
@@ -20,7 +18,6 @@ class Family:
         print(f"Family: {self.last_name}")
         for member in self.members:
             print(f"Name: {member['name']}, Age: {member['age']}, Gender: {member['gender']}, Child: {member['is_child']}")
-
 
 members_list = [
     {'name': 'Michael', 'age': 35, 'gender': 'Male', 'is_child': False},
