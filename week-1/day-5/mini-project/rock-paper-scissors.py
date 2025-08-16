@@ -5,7 +5,7 @@ def get_user_menu_choice():
     print("\nMenu:")
     print("(g) Play a new game")
     print("(s) Show scores")
-    print("(q) Quit")
+    print("(q) Quit");
     
     choice = input("Enter your choice: ").strip().lower()
     while choice not in ["g", "s", "q"]:
