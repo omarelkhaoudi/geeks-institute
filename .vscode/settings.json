@@ -19,6 +19,16 @@
             "database": "bootcamp",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Hollywood",
+            "database": "Hollywood",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
