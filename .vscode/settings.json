@@ -29,6 +29,16 @@
             "database": "Hollywood",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "dvdrental",
+            "database": "dvdrental",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
