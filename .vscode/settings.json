@@ -39,6 +39,16 @@
             "database": "dvdrental",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "SQLPuzzle",
+            "database": "SQLPuzzle",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
