@@ -49,6 +49,16 @@
             "database": "SQLPuzzle",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "public_2",
+            "database": "public_2",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
