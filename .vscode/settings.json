@@ -69,6 +69,26 @@
             "database": "shop_db",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "restaurant",
+            "database": "restaurant",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "countries_db",
+            "database": "countries_db",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
