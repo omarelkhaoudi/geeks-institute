@@ -1,0 +1,94 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "public",
+            "database": "public",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "bootcamp",
+            "database": "bootcamp",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Hollywood",
+            "database": "Hollywood",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "dvdrental",
+            "database": "dvdrental",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "SQLPuzzle",
+            "database": "SQLPuzzle",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "public_2",
+            "database": "public_2",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "shop_db",
+            "database": "shop_db",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "restaurant",
+            "database": "restaurant",
+            "username": "postgres",
+            "password": "root"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "countries_db",
+            "database": "countries_db",
+            "username": "postgres",
+            "password": "root"
+        }
+    ]
+}
