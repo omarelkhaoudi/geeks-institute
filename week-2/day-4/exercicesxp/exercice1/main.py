@@ -13,4 +13,4 @@ print(item2.name, item2.price) if item2 else print("Item not found")
 
 items = MenuManager.all_items()
 for i in items:
-    print(i.name, i.price)
+    print(i.name, i.price);
