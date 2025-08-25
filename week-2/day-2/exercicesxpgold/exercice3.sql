@@ -45,9 +45,9 @@ WHERE customer_id = 5;
 
 --6)
 SELECT p.id, c.customer_first_name, c.customer_last_name, i.item_name, p.quantity_purchased
-FROM purchases p
-JOIN customers c ON p.customer_id = c.customer_id
-JOIN items i ON p.item_id = i.item_id
+FROM purchases p JOIN customers c
+ON p.customer_id = c.customer_id JOIN items i 
+ON p.item_id = i.item_id 
 WHERE i.item_name IN ('Large desk', 'Small Desk');
 
 --7)
