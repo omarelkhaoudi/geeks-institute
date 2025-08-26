@@ -1,7 +1,7 @@
 import sqlite3
 import hashlib
 
-# ----------------- DATABASE -----------------
+               #DATABASE#
 def init_db():
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -15,7 +15,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# ----------------- ADD USER -----------------
+               #ADD USER#
 def add_user(username, password):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -28,7 +28,7 @@ def add_user(username, password):
         print("Username already exists.")
     conn.close()
 
-# ----------------- CHECK USER -----------------
+                #CHECK USER#
 def check_user(username, password):
     conn = sqlite3.connect("users.db")
     cursor = conn.cursor()
@@ -38,7 +38,7 @@ def check_user(username, password):
     conn.close()
     return user is not None
 
-# ----------------- MAIN PROGRAM -----------------
+               #MAIN PROGRAM#
 if __name__ == "__main__":
     init_db()
 
