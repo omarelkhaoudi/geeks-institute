@@ -1,5 +1,6 @@
 import sqlite3
 import hashlib
+
                #DATABASE#
 def init_db():
     conn = sqlite3.connect("users.db")
