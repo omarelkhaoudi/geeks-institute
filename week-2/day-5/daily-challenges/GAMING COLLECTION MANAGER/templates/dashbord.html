@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="max-w-7xl mx-auto my-10 px-4">
+
+  <h1 class="text-2xl font-bold mb-6">Dashboard / Statistics</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <div class="bg-white p-6 rounded-xl shadow-md">
+      <h2 class="text-lg font-semibold mb-2">Total Games</h2>
+      <p class="text-3xl font-bold">{{ total_games }}</p>
+    </div>
+    <div class="bg-white p-6 rounded-xl shadow-md">
+      <h2 class="text-lg font-semibold mb-2">Total Reviews</h2>
+      <p class="text-3xl font-bold">{{ total_reviews }}</p>
+    </div>
+  </div>
+
+  <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+    <h2 class="text-lg font-semibold mb-4">Top 5 Games by Average Rating</h2>
+    <ul class="list-disc pl-5">
+      {% for game in top_games %}
+      <li>{{ game[0] }} - ⭐ {{ "%.2f"|format(game[1]) }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+    <h2 class="text-lg font-semibold mb-4">Games by Genre</h2>
+    <ul class="list-disc pl-5">
+      {% for genre in genre_distribution %}
+      <li>{{ genre[0] }} : {{ genre[1] }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</main>
+{% endblock %}
