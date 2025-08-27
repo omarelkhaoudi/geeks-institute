@@ -156,27 +156,39 @@ def search_games():
     cur.close()
     conn.close()
     return render_template("index.html", data=games)
-
 @app.route("/dashboard")
 def dashboard():
-    # مثال إحصائيات بسيطة
     conn = get_connection()
     cur = conn.cursor()
-    
-    # مثال: عدد الألعاب
-    cur.execute("SELECT COUNT(*) FROM games")
-    total_games = cur.fetchone()[0]
-    
-    # مثال: عدد المراجعات
-    cur.execute("SELECT COUNT(*) FROM reviews")
-    total_reviews = cur.fetchone()[0]
-    
-    cur.close()
-    conn.close()
-    
-    return render_template("dashboard.html", total_games=total_games, total_reviews=total_reviews)
 
+    try:
+        # عدد الألعاب
+        cur.execute("SELECT COUNT(*) AS total_games FROM games")
+        total_games = cur.fetchone()['total_games']
 
+        # عدد المراجعات
+        cur.execute("SELECT COUNT(*) AS total_reviews FROM reviews")
+        total_reviews = cur.fetchone()['total_reviews']
+
+        # متوسط تقييم الألعاب
+        cur.execute("SELECT AVG(rating) AS avg_rating FROM games")
+        avg_rating = cur.fetchone()['avg_rating'] or 0
+
+        # عدد الألعاب حسب النوع
+        cur.execute("SELECT genre, COUNT(*) AS count FROM games GROUP BY genre")
+        games_by_genre = cur.fetchall()  # list of dicts: [{'genre': 'Action', 'count': 5}, ...]
+
+        return render_template("dashboard.html",
+                               total_games=total_games,
+                               total_reviews=total_reviews,
+                               avg_rating=round(avg_rating, 2),
+                               games_by_genre=games_by_genre)
+    except Exception as e:
+        flash(f"Error fetching dashboard data: {str(e)}", "error")
+        return redirect(url_for("show_games"))
+    finally:
+        cur.close()
+        conn.close()
 
 # ==========================================
 # RUN SERVER
