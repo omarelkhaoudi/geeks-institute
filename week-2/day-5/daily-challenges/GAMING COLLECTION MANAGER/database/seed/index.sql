@@ -27,16 +27,40 @@ CREATE TABLE IF NOT EXISTS games (
     metacritic_score INT CHECK (metacritic_score >= 0 AND metacritic_score <= 100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (developer_id) REFERENCES developers(id),
+    FOREIGN KEY (developer_id) REFERENCES developers(id) 
     FOREIGN KEY (platform_id) REFERENCES platforms(id)
 );
 
--- Many-to-Many: game_developers
-CREATE TABLE IF NOT EXISTS game_developers (
-    game_id INT REFERENCES games(id) ON DELETE CASCADE,
-    developer_id INT REFERENCES developers(id) ON DELETE CASCADE,
-    PRIMARY KEY (game_id, developer_id)
-);
+SELECT conname
+FROM pg_constraint
+WHERE conrelid = 'games'::regclass;
+
+ALTER TABLE games DROP CONSTRAINT games_developer_id_fkey;
+ALTER TABLE games DROP CONSTRAINT games_platform_id_fkey;
+
+ALTER TABLE developers ADD COLUMN logo_url VARCHAR(255);
+
+UPDATE developers SET logo_url = 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Nintendo.svg' WHERE name='Nintendo';
+UPDATE developers SET logo_url = 'https://d18qa1zi1lagoc.cloudfront.net/articles/vANcY4ntjviFfM3WzEZHboRIabdvEibaiiye7WtD.jpg' WHERE name='Ubisoft';
+UPDATE developers SET logo_url = 'https://logos-world.net/wp-content/uploads/2021/02/Bethesda-Emblem.jpg' WHERE name='Bethesda';
+UPDATE developers SET logo_url = 'https://www.culture-games.com/wp-content/uploads/societes/From-Software-liste.jpg' WHERE name='FromSoftware';
+UPDATE developers SET logo_url = 'https://www.cdprojektred.com/build/images/cdpr-default-e45439ba.jpg' WHERE name='CD Projekt Red';
+
+SELECT id, name, logo_url FROM developers;
+
+
+ALTER TABLE games
+ADD CONSTRAINT games_developer_id_fkey
+FOREIGN KEY (developer_id) REFERENCES developers(id) ON DELETE CASCADE;
+
+ALTER TABLE games
+ADD CONSTRAINT games_platform_id_fkey
+FOREIGN KEY (platform_id) REFERENCES platforms(id) ON DELETE CASCADE;
+
+-- One-to-Many: game_developers
+
+
+
 
 -- Many-to-Many: game_platforms
 CREATE TABLE IF NOT EXISTS game_platforms (
@@ -74,6 +98,11 @@ INSERT INTO platforms (name, manufacturer) VALUES
 ('Switch', 'Nintendo'),
 ('PC', 'Various'),
 ('PlayStation 5', 'Sony');
+
+INSERT INTO platforms (name, manufacturer) VALUES
+('Xbox Series X', 'Microsoft'),
+('PlayStation 4', 'Sony'),
+('Xbox One', 'Microsoft');
 
 INSERT INTO games (
     title, genre, release_year, description,
@@ -192,6 +221,9 @@ INSERT INTO reviews (user_id, game_id, rating, comment) VALUES
 (1, 1, 5.0, 'Incroyable jeu, graphismes et gameplay au top !'),
 (2, 2, 4.5, 'Super aventure mais quelques bugs.'),
 (1, 3, 4.8, 'Épique et émouvant, Kratos au meilleur de sa forme.');
+
+
+
 
 
 

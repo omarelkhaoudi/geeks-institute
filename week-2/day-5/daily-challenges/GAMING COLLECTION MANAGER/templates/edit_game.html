@@ -171,6 +171,14 @@
             </div>
         </div>
 
+        <label for="developer_id" class="block font-medium mb-1">Developer</label>
+        <select name="developer_id" id="developer_id" class="w-full border-gray-300 rounded-md mb-4">
+        {% for dev in developers %}
+        <option value="{{ dev.id }}" {% if dev.id == game.developer_id %}selected{% endif %}>{{ dev.name }}</option>
+        {% endfor %}
+        </select>
+
+
         <!-- Action Buttons -->
         <div class="flex gap-4 pt-6">
             <button type="button" class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-all duration-200 font-medium">

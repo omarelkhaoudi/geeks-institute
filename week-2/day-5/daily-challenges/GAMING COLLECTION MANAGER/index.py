@@ -17,15 +17,57 @@ def get_connection():
 @app.route("/", methods=["GET"])
 def show_games():
     conn = get_connection()
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM games")
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+
+    # Pagination
+    page = request.args.get("page", 1, type=int)
+    per_page = 6
+    offset = (page - 1) * per_page
+
+    # Total des jeux
+    cur.execute("SELECT COUNT(*) FROM games")
+    total_games = cur.fetchone()["count"]
+    total_pages = (total_games + per_page - 1) // per_page  # arrondi supérieur
+
+    # Récupérer les jeux avec développeur
+    cur.execute("""
+        SELECT g.*, d.name AS developer
+        FROM games g
+        LEFT JOIN developers d ON g.developer_id = d.id
+        ORDER BY g.id DESC
+        LIMIT %s OFFSET %s
+    """, (per_page, offset))
     games = cur.fetchall()
+
+    # Ajouter les plateformes pour chaque jeu
+    for game in games:
+        cur.execute("""
+            SELECT p.name
+            FROM platforms p
+            JOIN game_platforms gp ON p.id = gp.platform_id
+            WHERE gp.game_id = %s
+        """, (game['id'],))
+        game['platforms'] = [p['name'] for p in cur.fetchall()]
+
     cur.close()
     conn.close()
-    return render_template("index.html", data=games)
+    return render_template("index.html", data=games, page=page, total_pages=total_pages)
+
+
 
 @app.route("/create", methods=["GET", "POST"])
 def create_game():
+    conn = get_connection()
+    cur = conn.cursor()
+    
+    # Récupérer les développeurs
+    cur.execute("SELECT id, name FROM developers ORDER BY name")
+    developers = cur.fetchall()
+
+    # Récupérer les plateformes
+    cur.execute("SELECT id, name FROM platforms ORDER BY name")
+    platforms = cur.fetchall()
+    
     if request.method == "POST":
         title = request.form["title"]
         genre = request.form["genre"]
@@ -35,59 +77,105 @@ def create_game():
         metacritic_score = request.form["metacritic_score"]
         tags = request.form["tags"]
         image_url = request.form["image_url"]
+        developer_id = request.form["developer_id"]
+        platform_ids = request.form.getlist("platforms")  # récupère plusieurs plateformes
 
-        conn = get_connection()
-        cur = conn.cursor()
+        # Insérer le jeu dans la table games
         cur.execute(
             """
-            INSERT INTO games (title, genre, release_year, description, rating, metacritic_score, tags, image_url)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+            INSERT INTO games (title, genre, release_year, description, rating, metacritic_score, tags, image_url, developer_id)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            RETURNING id
             """,
-            (title, genre, release_year, description, rating, metacritic_score, tags, image_url)
+            (title, genre, release_year, description, rating, metacritic_score, tags, image_url, developer_id)
         )
+        game_id = cur.fetchone()[0]
+
+        # Insérer les relations Many-to-Many dans game_platforms
+        for pid in platform_ids:
+            cur.execute(
+                "INSERT INTO game_platforms (game_id, platform_id) VALUES (%s, %s)",
+                (game_id, pid)
+            )
+
         conn.commit()
+        flash(f'Game "{title}" created successfully!', 'success')
         cur.close()
         conn.close()
-        flash(f'Game "{title}" created successfully!', 'success')
         return redirect(url_for("show_games"))
 
-    return render_template("create.html")
+    cur.close()
+    conn.close()
+    return render_template("create.html", developers=developers, platforms=platforms)
+
+
 
 @app.route("/edit/<int:game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
     conn = get_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+
+    # récupérer tous les développeurs pour le select
+    cur.execute("SELECT id, name FROM developers ORDER BY name")
+    developers = cur.fetchall()
 
     if request.method == "POST":
+        # Récupérer les données du formulaire
         title = request.form["title"]
         genre = request.form["genre"]
         release_year = request.form["release_year"]
         description = request.form["description"]
         rating = request.form["rating"]
+        developer_id = request.form["developer_id"]
 
+        # Mettre à jour le jeu
         cur.execute(
             """
-            UPDATE games SET title=%s, genre=%s, release_year=%s, description=%s, rating=%s
+            UPDATE games
+            SET title=%s, genre=%s, release_year=%s, description=%s, rating=%s, developer_id=%s
             WHERE id=%s
             """,
-            (title, genre, release_year, description, rating, game_id)
+            (title, genre, release_year, description, rating, developer_id, game_id)
         )
         conn.commit()
+
+        # Mettre à jour les plateformes associées
+        platform_ids = request.form.getlist('platforms')
+        cur.execute("DELETE FROM game_platforms WHERE game_id=%s", (game_id,))
+        for pid in platform_ids:
+            cur.execute(
+                "INSERT INTO game_platforms (game_id, platform_id) VALUES (%s, %s)",
+                (game_id, pid)
+            )
+        conn.commit()
+
         flash(f'Game "{title}" updated successfully!', 'success')
         cur.close()
         conn.close()
         return redirect(url_for("show_games"))
 
-    # GET request
+    # -------------------
+    # Partie GET : récupérer les infos pour pré-remplir le formulaire
+    # -------------------
     cur.execute("SELECT * FROM games WHERE id=%s", (game_id,))
     game = cur.fetchone()
-    cur.close()
-    conn.close()
-    if not game:
-        flash("Game not found.", "error")
-        return redirect(url_for("show_games"))
 
-    return render_template("edit_game.html", game=game)
+    cur.execute("SELECT id, name FROM platforms ORDER BY name")
+    platforms = cur.fetchall()
+
+    cur.execute("SELECT platform_id FROM game_platforms WHERE game_id=%s", (game_id,))
+    game_platform_ids = [p['platform_id'] for p in cur.fetchall()]
+
+    return render_template(
+        "edit_game.html",
+        game=game,
+        developers=developers,
+        platforms=platforms,
+        game_platform_ids=game_platform_ids
+    )
+
+
+
 
 @app.route("/delete/<int:game_id>", methods=["POST"])
 def delete_game(game_id):
@@ -156,6 +244,19 @@ def search_games():
     cur.close()
     conn.close()
     return render_template("index.html", data=games)
+
+@app.route("/developers")
+def developers():
+    conn = get_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    cur.execute("SELECT id, name, country, logo_url FROM developers")
+    developers = cur.fetchall()
+    cur.close()
+    conn.close()
+    return render_template("developers.html", developers=developers)
+
+
+
 @app.route("/dashboard")
 def dashboard():
     conn = get_connection()
