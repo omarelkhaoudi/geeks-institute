@@ -1,30 +1,208 @@
-{% extends "base.html" %}
-{% block content %}
-<main class="max-w-4xl mx-auto my-10 px-4">
-    <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Total Games</h2>
-            <p class="text-2xl font-bold">{{ total_games }}</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Total Reviews</h2>
-            <p class="text-2xl font-bold">{{ total_reviews }}</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-md">
-            <h2 class="text-lg font-semibold mb-2">Average Rating</h2>
-            <p class="text-2xl font-bold">{{ avg_rating }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games by Genre Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Animation for bars */
+        @keyframes slideIn {
+            from {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+            to {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+        
+        .bar-animation {
+            animation: slideIn 0.8s ease-out forwards;
+            transform-origin: left center;
+        }
+        
+        /* Gradient backgrounds for genre bars */
+        .sports-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .action-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .shooter-gradient {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .adventure-gradient {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hover effects */
+        .genre-bar:hover {
+            transform: translateX(10px);
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 min-h-screen p-8">
+    <!-- Container for both visualizations -->
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Games by Genre - Bar Visualization -->
+            <div class="glass rounded-2xl p-6 shadow-2xl">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full"></span>
+                    Games by Genre
+                </h2>
+                
+                <div class="space-y-4">
+                    <!-- Action: 3 games -->
+                    <div class="genre-item">
+                        <div class="flex items-center justify-between text-white mb-2">
+                            <span class="font-medium text-lg">Action</span>
+                            <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">3</span>
+                        </div>
+                        <div class="w-full bg-gray-800/50 rounded-full h-12 overflow-hidden">
+                            <div class="genre-bar action-gradient h-full rounded-full flex items-center justify-end pr-4 transition-all duration-300 cursor-pointer bar-animation" 
+                                 style="width: 75%; animation-delay: 0.1s;">
+                                <span class="text-white font-semibold text-sm drop-shadow-lg">75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sports: 1 game -->
+                    <div class="genre-item">
+                        <div class="flex items-center justify-between text-white mb-2">
+                            <span class="font-medium text-lg">Sports</span>
+                            <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">1</span>
+                        </div>
+                        <div class="w-full bg-gray-800/50 rounded-full h-12 overflow-hidden">
+                            <div class="genre-bar sports-gradient h-full rounded-full flex items-center justify-end pr-4 transition-all duration-300 cursor-pointer bar-animation" 
+                                 style="width: 25%; animation-delay: 0.2s;">
+                                <span class="text-white font-semibold text-sm drop-shadow-lg">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Shooter: 1 game -->
+                    <div class="genre-item">
+                        <div class="flex items-center justify-between text-white mb-2">
+                            <span class="font-medium text-lg">Shooter</span>
+                            <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">1</span>
+                        </div>
+                        <div class="w-full bg-gray-800/50 rounded-full h-12 overflow-hidden">
+                            <div class="genre-bar shooter-gradient h-full rounded-full flex items-center justify-end pr-4 transition-all duration-300 cursor-pointer bar-animation" 
+                                 style="width: 25%; animation-delay: 0.3s;">
+                                <span class="text-white font-semibold text-sm drop-shadow-lg">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action-Adventure: 1 game -->
+                    <div class="genre-item">
+                        <div class="flex items-center justify-between text-white mb-2">
+                            <span class="font-medium text-lg">Action-Adventure</span>
+                            <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">1</span>
+                        </div>
+                        <div class="w-full bg-gray-800/50 rounded-full h-12 overflow-hidden">
+                            <div class="genre-bar adventure-gradient h-full rounded-full flex items-center justify-end pr-4 transition-all duration-300 cursor-pointer bar-animation" 
+                                 style="width: 25%; animation-delay: 0.4s;">
+                                <span class="text-white font-semibold text-sm drop-shadow-lg">25%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Summary Stats -->
+                <div class="mt-8 pt-6 border-t border-gray-700/50">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-4 text-center">
+                            <p class="text-gray-400 text-sm">Total Games</p>
+                            <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">6</p>
+                        </div>
+                        <div class="glass rounded-xl p-4 text-center">
+                            <p class="text-gray-400 text-sm">Genres</p>
+                            <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Games by Genre Chart (Placeholder for existing chart) -->
+            <div class="glass rounded-2xl p-6 shadow-2xl">
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full"></span>
+                    Games by Genre (Chart)
+                </h2>
+                
+                <!-- Chart Container -->
+                <div class="bg-white/10 rounded-xl p-4 h-96 flex items-end justify-around">
+                    <!-- Sports Bar -->
+                    <div class="w-20 flex flex-col items-center gap-2">
+                        <div class="sports-gradient rounded-t-lg transition-all duration-300 hover:opacity-80 cursor-pointer" 
+                             style="height: 80px; width: 100%;"></div>
+                        <span class="text-white text-sm font-medium">Sports</span>
+                    </div>
+                    
+                    <!-- Action Bar -->
+                    <div class="w-20 flex flex-col items-center gap-2">
+                        <div class="action-gradient rounded-t-lg transition-all duration-300 hover:opacity-80 cursor-pointer" 
+                             style="height: 240px; width: 100%;"></div>
+                        <span class="text-white text-sm font-medium">Action</span>
+                    </div>
+                    
+                    <!-- Shooter Bar -->
+                    <div class="w-20 flex flex-col items-center gap-2">
+                        <div class="shooter-gradient rounded-t-lg transition-all duration-300 hover:opacity-80 cursor-pointer" 
+                             style="height: 80px; width: 100%;"></div>
+                        <span class="text-white text-sm font-medium">Shooter</span>
+                    </div>
+                    
+                    <!-- Action-Adventure Bar -->
+                    <div class="w-20 flex flex-col items-center gap-2">
+                        <div class="adventure-gradient rounded-t-lg transition-all duration-300 hover:opacity-80 cursor-pointer" 
+                             style="height: 80px; width: 100%;"></div>
+                        <span class="text-white text-sm font-medium text-center">Adventure</span>
+                    </div>
+                </div>
+                
+                <!-- Chart Legend -->
+                <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 sports-gradient rounded"></div>
+                        <span class="text-gray-300 text-sm">Sports (1)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 action-gradient rounded"></div>
+                        <span class="text-gray-300 text-sm">Action (3)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 shooter-gradient rounded"></div>
+                        <span class="text-gray-300 text-sm">Shooter (1)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 adventure-gradient rounded"></div>
+                        <span class="text-gray-300 text-sm">Adventure (1)</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="bg-white p-6 rounded-xl shadow-md">
-        <h2 class="text-lg font-semibold mb-4">Games by Genre</h2>
-        <ul class="list-disc pl-5">
-            {% for g in games_by_genre %}
-            <li>{{ g.genre }}: {{ g.count }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</main>
-{% endblock %}
+</body>
+</html>

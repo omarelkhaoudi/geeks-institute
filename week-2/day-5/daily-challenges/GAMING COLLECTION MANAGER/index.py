@@ -159,36 +159,34 @@ def search_games():
 @app.route("/dashboard")
 def dashboard():
     conn = get_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-    try:
-        # عدد الألعاب
-        cur.execute("SELECT COUNT(*) AS total_games FROM games")
-        total_games = cur.fetchone()['total_games']
+    # Total games
+    cur.execute("SELECT COUNT(*) AS total_games FROM games")
+    total_games = cur.fetchone()['total_games']
 
-        # عدد المراجعات
-        cur.execute("SELECT COUNT(*) AS total_reviews FROM reviews")
-        total_reviews = cur.fetchone()['total_reviews']
+    # Total reviews
+    cur.execute("SELECT COUNT(*) AS total_reviews FROM reviews")
+    total_reviews = cur.fetchone()['total_reviews']
 
-        # متوسط تقييم الألعاب
-        cur.execute("SELECT AVG(rating) AS avg_rating FROM games")
-        avg_rating = cur.fetchone()['avg_rating'] or 0
+    # Average rating
+    cur.execute("SELECT ROUND(AVG(rating),2) AS avg_rating FROM games")
+    avg_rating = cur.fetchone()['avg_rating'] or 0
 
-        # عدد الألعاب حسب النوع
-        cur.execute("SELECT genre, COUNT(*) AS count FROM games GROUP BY genre")
-        games_by_genre = cur.fetchall()  # list of dicts: [{'genre': 'Action', 'count': 5}, ...]
+    # Games by genre
+    cur.execute("SELECT genre, COUNT(*) AS count FROM games GROUP BY genre ORDER BY count DESC")
+    games_by_genre = cur.fetchall()  # list of dicts
 
-        return render_template("dashboard.html",
-                               total_games=total_games,
-                               total_reviews=total_reviews,
-                               avg_rating=round(avg_rating, 2),
-                               games_by_genre=games_by_genre)
-    except Exception as e:
-        flash(f"Error fetching dashboard data: {str(e)}", "error")
-        return redirect(url_for("show_games"))
-    finally:
-        cur.close()
-        conn.close()
+    cur.close()
+    conn.close()
+
+    return render_template(
+        "dashboard.html",
+        total_games=total_games,
+        total_reviews=total_reviews,
+        avg_rating=avg_rating,
+        games_by_genre=games_by_genre
+    )
 
 # ==========================================
 # RUN SERVER
