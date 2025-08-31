@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or 'EventMS' }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-6 sm:px-4 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo -->
+      <a href="{{ url_for('events.list_events') }}" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-700 transition-colors">
+        EventMS
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-6 font-medium text-gray-700">
+        <a href="{{ url_for('events.list_events') }}" class="hover:text-indigo-600 transition-colors">Events</a>
+        <a href="{{ url_for('organizers.list_organizers') }}" class="hover:text-indigo-600 transition-colors">Organizers</a>
+        <a href="{{ url_for('attendees.list_attendees') }}" class="hover:text-indigo-600 transition-colors">Attendees</a>
+        <a href="{{ url_for('stats') }}" class="hover:text-indigo-600 transition-colors">Dashboard</a>
+      </div>
+
+      <!-- User / Auth Links -->
+      <div class="hidden md:flex items-center space-x-4">
+        {% if current_user.is_authenticated %}
+          <span class="text-gray-500">Hi, <span class="font-semibold">{{ current_user.username }}</span></span>
+          <a href="{{ url_for('auth.logout') }}" class="px-3 py-1 rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:border-red-300 transition">Logout</a>
+        {% else %}
+          <a href="{{ url_for('auth.login') }}" class="px-3 py-1 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 hover:border-indigo-300 transition">Login</a>
+          <a href="{{ url_for('auth.register') }}" class="px-3 py-1 rounded-lg border border-indigo-200 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 hover:border-indigo-300 transition">Register</a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 p-2 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <div class="px-6 py-4 space-y-2">
+      <a href="{{ url_for('events.list_events') }}" class="block text-gray-700 hover:text-indigo-600 transition-colors">Events</a>
+      <a href="{{ url_for('organizers.list_organizers') }}" class="block text-gray-700 hover:text-indigo-600 transition-colors">Organizers</a>
+      <a href="{{ url_for('attendees.list_attendees') }}" class="block text-gray-700 hover:text-indigo-600 transition-colors">Attendees</a>
+      <a href="{{ url_for('stats') }}" class="block text-gray-700 hover:text-indigo-600 transition-colors">Dashboard</a>
+      {% if current_user.is_authenticated %}
+        <span class="block text-gray-500 mt-2">Hi, {{ current_user.username }}</span>
+        <a href="{{ url_for('auth.logout') }}" class="block text-red-600 hover:text-red-700 mt-1">Logout</a>
+      {% else %}
+        <a href="{{ url_for('auth.login') }}" class="block text-indigo-600 hover:text-indigo-700 mt-1">Login</a>
+        <a href="{{ url_for('auth.register') }}" class="block text-indigo-600 hover:text-indigo-700 mt-1">Register</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</nav>
+
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="space-y-3 mb-6">
+          {% for category, message in messages %}
+            <div class="flex items-center gap-2 p-4 rounded-lg border text-sm font-medium
+                        {% if category == 'success' %}
+                          bg-green-50 text-green-800 border-green-300
+                        {% elif category == 'error' %}
+                          bg-red-50 text-red-800 border-red-300
+                        {% else %}
+                          bg-gray-50 text-gray-700 border-gray-300
+                        {% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
