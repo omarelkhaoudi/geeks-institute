@@ -1,7 +1,7 @@
-# File Tree: geeks_checking
+# File Tree: geeks-institute
 
 Generated on: 8/14/2025, 5:09:48 PM
-Root path: `c:\Users\brahi\Desktop\geeks_checking\geeks_checking`
+Root path: `C:\Users\omar\Desktop\geeks-institute\geeks-institute`
 
 ```
 ├── 📁 .git/ 🚫 (auto-hidden)
