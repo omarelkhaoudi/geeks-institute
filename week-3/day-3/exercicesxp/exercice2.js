@@ -3,7 +3,7 @@
 
 // 1) Retrieve the form and console.log it.
 
-const form = document.getElementById("userForm");
+const form = document.querySelector("#userForm");
 console.log("Form:", form);
 
 // 2) Retrieve the inputs by their id and console.log them.
@@ -29,8 +29,8 @@ console.log("Inputs by Name:", fnameByName, lnameByName);
       event.preventDefault(); // Prevent page refresh
 
       // Get values
-      const firstName = fnameInput.value.trim();
-      const lastName = lnameInput.value.trim();
+      const firstName = fnameByName.value.trim();
+      const lastName = lnameByName.value.trim();
 
       // Check if inputs are not empty
       if (firstName === "" || lastName === "") {
@@ -40,7 +40,7 @@ console.log("Inputs by Name:", fnameByName, lnameByName);
 
       // Clear old answers before adding new ones
       const ul = document.querySelector(".usersAnswer");
-      ul.innerHTML = "";
+    //   ul.innerHTML = "";
 
       // Create li for each value and append
       const li1 = document.createElement("li");
@@ -50,7 +50,4 @@ console.log("Inputs by Name:", fnameByName, lnameByName);
 
       ul.appendChild(li1);
       ul.appendChild(li2);
-
-      // Optional: reset form after submission
-      form.reset();
     });
