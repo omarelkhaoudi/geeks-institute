@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="drum-set">
+    <div class="drum" data-key="65">
+      <span class="key">A</span>
+      <span class="sound">Boom</span>
+    </div>
+    <div class="drum" data-key="83">
+      <span class="key">S</span>
+      <span class="sound">Clap</span>
+    </div>
+    <div class="drum" data-key="68">
+      <span class="key">D</span>
+      <span class="sound">HiHat</span>
+    </div>
+    <div class="drum" data-key="70">
+      <span class="key">F</span>
+      <span class="sound">Kick</span>
+    </div>
+    <div class="drum" data-key="71">
+      <span class="key">G</span>
+      <span class="sound">OpenHat</span>
+    </div>
+    <div class="drum" data-key="72">
+      <span class="key">H</span>
+      <span class="sound">Ride</span>
+    </div>
+    <div class="drum" data-key="74">
+      <span class="key">J</span>
+      <span class="sound">Snare</span>
+    </div>
+    <div class="drum" data-key="75">
+      <span class="key">K</span>
+      <span class="sound">Tink</span>
+    </div>
+    <div class="drum" data-key="76">
+      <span class="key">L</span>
+      <span class="sound">Tom</span>
+    </div>
+  </div>
+
+  <!-- Sons -->
+  <audio data-key="65" src="./drumset_setup/sounds/boom.wav"></audio>
+  <audio data-key="83" src="./drumset_setup/sounds/clap.wav"></audio>
+  <audio data-key="68" src="./drumset_setup/sounds/hihat.wav"></audio>
+  <audio data-key="70" src="./drumset_setup/sounds/kick.wav"></audio>
+  <audio data-key="71" src="./drumset_setup/sounds/openhat.wav"></audio>
+  <audio data-key="72" src="./drumset_setup/sounds/ride.wav"></audio>
+  <audio data-key="74" src="./drumset_setup/sounds/snare.wav"></audio>
+  <audio data-key="75" src="./drumset_setup/sounds/tink.wav"></audio>
+  <audio data-key="76" src="./drumset_setup/sounds/tom.wav"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
