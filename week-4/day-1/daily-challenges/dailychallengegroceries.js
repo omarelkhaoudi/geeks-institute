@@ -15,6 +15,7 @@ const cloneGroceries = () => {
     console.log("client:", client);
 }
 
+// Invoke the function
 clonedGroceries();
 // Why? The change in client does NOT affect user, because they are two separate values in memory
 
@@ -31,6 +32,7 @@ const clonedGroceries = () => {
     console.log("shopping:", shopping);
 }
 
+// Invoke the function
 clonedGroceries(); 
 // Why? Because both groceries and shopping point to the same memory location.
 
