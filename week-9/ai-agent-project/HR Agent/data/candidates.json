@@ -1,0 +1,14 @@
+[
+  {"firstName":"Amina","lastName":"El Idrissi","email":"amina@example.com","location":"Casablanca","experienceYears":1,"skills":["React","JS","HTML","Git"],"availabilityDate":"2025-09-20","stage":"SOURCED","notes":"Portfolio: https://amina.dev"},
+  {"firstName":"Youssef","lastName":"Amrani","email":"youssef@example.com","location":"Rabat","experienceYears":2,"skills":["Node.js","Express","MongoDB","Git"],"availabilityDate":"2025-10-05","stage":"SCREEN","notes":"Backend projects on GitHub"},
+  {"firstName":"Salma","lastName":"Bennani","email":"salma@example.com","location":"Marrakech","experienceYears":0,"skills":["HTML","CSS","JS"],"availabilityDate":"2025-09-25","stage":"SOURCED","notes":"Final year student"},
+  {"firstName":"Omar","lastName":"Khoudi","email":"omar.k@example.com","location":"Casablanca","experienceYears":1,"skills":["React","Tailwind","JS"],"availabilityDate":"2025-10-01","stage":"INTERVIEW","notes":"Freelance portfolio"},
+  {"firstName":"Fatima","lastName":"Zerouali","email":"fatima@example.com","location":"Fes","experienceYears":3,"skills":["Python","Django","SQL"],"availabilityDate":"2025-11-01","stage":"SCREEN","notes":"Enterprise projects"},
+  {"firstName":"Rachid","lastName":"El Kadi","email":"rachid@example.com","location":"Tanger","experienceYears":2,"skills":["React","Node.js","MongoDB"],"availabilityDate":"2025-09-15","stage":"SOURCED","notes":"Fullstack interest"},
+  {"firstName":"Imane","lastName":"Boukhari","email":"imane@example.com","location":"Casablanca","experienceYears":0,"skills":["HTML","CSS","JS","Git"],"availabilityDate":"2025-10-20","stage":"SOURCED","notes":"Bootcamp graduate"},
+  {"firstName":"Khalid","lastName":"Naji","email":"khalid@example.com","location":"Rabat","experienceYears":4,"skills":["SQL","Python","Airflow"],"availabilityDate":"2025-12-01","stage":"INTERVIEW","notes":"Data background"},
+  {"firstName":"Leila","lastName":"Hassan","email":"leila@example.com","location":"Casablanca","experienceYears":1,"skills":["React","JS","Git","CSS"],"availabilityDate":"2025-09-30","stage":"SOURCED","notes":"Frontend hobbyist"},
+  {"firstName":"Sami","lastName":"Benali","email":"sami@example.com","location":"Marrakech","experienceYears":2,"skills":["Node.js","Express","Docker"],"availabilityDate":"2025-09-28","stage":"SCREEN","notes":"Good API understanding"},
+  {"firstName":"Nora","lastName":"Saidi","email":"nora@example.com","location":"Casablanca","experienceYears":1,"skills":["React","JS","HTML","Git"],"availabilityDate":"2025-10-10","stage":"SOURCED","notes":"Has internship experience"},
+  {"firstName":"Adil","lastName":"Mansouri","email":"adil@example.com","location":"Fes","experienceYears":0,"skills":["HTML","CSS","JS","Tailwind"],"availabilityDate":"2025-09-18","stage":"SOURCED","notes":"Recent bootcamp"}
+]
