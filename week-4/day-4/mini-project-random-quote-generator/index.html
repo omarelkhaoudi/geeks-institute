@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    section { margin-bottom: 20px; }
+    button { margin: 5px; }
+    input, textarea { margin-bottom: 10px; display: block; }
+  </style>
+</head>
+<body>
+
+  <h1>Random Quote Generator</h1>
+
+  <!-- Section pour afficher la citation -->
+  <section id="quoteSection">
+    <p id="quoteText"></p>
+    <p id="quoteAuthor"></p>
+  </section>
+
+  <!-- Bouton générer citation -->
+  <button id="generateBtn">Generate Quote</button>
+
+  <!-- Form ajouter une citation -->
+  <h2>Add a Quote</h2>
+  <form id="addQuoteForm">
+    <input type="text" id="newQuote" placeholder="Quote" required>
+    <input type="text" id="newAuthor" placeholder="Author" required>
+    <button type="submit">Add Quote</button>
+  </form>
+
+  <!-- Boutons pour info sur la citation -->
+  <h2>Quote Info</h2>
+  <button id="charWithSpacesBtn">Chars (with spaces)</button>
+  <button id="charWithoutSpacesBtn">Chars (without spaces)</button>
+  <button id="wordCountBtn">Word count</button>
+  <button id="likeBtn">Like ❤️</button>
+  <p id="info"></p>
+
+  <!-- Form filtre par auteur -->
+  <h2>Filter by Author</h2>
+  <form id="filterForm">
+    <input type="text" id="filterAuthor" placeholder="Author name" required>
+    <button type="submit">Filter</button>
+  </form>
+
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
