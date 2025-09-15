@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Data</title>
+</head>
+<body>
+
+  <h1>Data Received</h1>
+  <section id="dataSection"></section>
+
+  <script>
+    // Récupérer les paramètres de l'URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const lastname = params.get('lastname');
+
+    // Sélectionner la section et afficher les données
+    const section = document.getElementById('dataSection');
+    section.textContent = `Name: ${name}, Last Name: ${lastname}`;
+  </script>
+
+</body>
+</html>
