@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Characters</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Fontawesome for loading icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg" alt="Star Wars Logo">
+    </div>
+
+    <!-- Card -->
+    <div class="card" id="characterCard">
+      <h2>Click "Find Someone"</h2>
+      <p>Height: -</p>
+      <p>Gender: -</p>
+      <p>Birth Year: -</p>
+      <p>Home World: -</p>
+    </div>
+
+    <!-- Loading + Error -->
+    <div id="loading" class="hidden"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+    <div id="error" class="hidden">⚠️ Error fetching data. Try again!</div>
+
+    <!-- Button -->
+    <button id="findBtn">Find Someone</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

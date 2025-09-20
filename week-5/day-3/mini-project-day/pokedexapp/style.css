@@ -1,0 +1,113 @@
+/* Background */
+body {
+  background: radial-gradient(circle at top, #ff1c1c, #111);
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.container {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 30px rgba(255, 0, 0, 0.7);
+  width: 400px;
+}
+
+/* Logo */
+.logo img {
+  width: 220px;
+  filter: drop-shadow(2px 2px 8px yellow);
+  margin-bottom: 25px;
+}
+
+/* Pokedex Screen */
+.pokedex {
+  border: 4px solid #222;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #e3e3e3);
+  padding: 0%;
+  margin: 0 auto 20px auto;
+  width: 100%;
+  box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.5);
+}
+
+.pokemon-card {
+  color: #222;
+}
+
+.pokemon-card img {
+  width: 150px;
+  animation: bounce 2s infinite;
+}
+
+.pokemon-card h2 {
+  font-size: 24px;
+  margin: 10px 0;
+  text-transform: capitalize;
+  color: #e60000;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* Bounce animation for Pokemon */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffcc00, #ffaa00);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(145deg, #ffee00, #ffbb00);
+}
+
+/* Loading + Error */
+#loading {
+  margin: 15px;
+  font-size: 20px;
+  color: #00ffea;
+  animation: pulse 1s infinite;
+}
+
+#error {
+  margin: 15px;
+  font-size: 18px;
+  color: #ff4444;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Pulse effect for loading */
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}

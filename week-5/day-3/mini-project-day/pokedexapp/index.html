@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="Pokédex Logo">
+    </div>
+
+    <!-- Pokedex Screen -->
+    <div class="pokedex">
+      <div id="pokemonInfo" class="pokemon-card">
+        <p>Click Random to start!</p>
+      </div>
+    </div>
+
+    <!-- Loading + Error -->
+    <div id="loading" class="hidden">🔄 Loading...</div>
+    <div id="error" class="hidden">⚠️ Oh no! That Pokémon isn’t available…</div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button id="prevBtn">⬅️ Prev</button>
+      <button id="randomBtn">🎲 Random</button>
+      <button id="nextBtn">➡️ Next</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
