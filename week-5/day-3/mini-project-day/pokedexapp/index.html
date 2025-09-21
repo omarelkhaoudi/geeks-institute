@@ -1,38 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokedex App</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Pokedex</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-
-    <!-- Logo -->
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="Pokédex Logo">
+    <div class="container">
+        <header>
+            <h1>Pokémon</h1>
+            <div class="subtitle">Got to catch 'small'!</div>
+        </header>
+        
+        <div class="instructions">
+            <h2>How to use:</h2>
+            <ul>
+                <li>Press the <strong>green</strong> button to get a random Pokémon.</li>
+                <li>Press the <strong>left</strong> and <strong>right</strong> buttons to see previous and next Pokémon.</li>
+            </ul>
+        </div>
+        
+        <div class="pokedex-body">
+            <div class="pokemon-display">
+                <div class="pokemon-image">
+                    <img id="pokemon-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2YwZjBmMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkeT0iLjM1ZW0iIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIj5Qb2tlbW9uIExvYWRpbmc8L3RleHQ+PC9zdmc+" alt="Pokemon">
+                </div>
+                <div class="pokemon-info">
+                    <h2 id="pokemon-name" class="pokemon-name">Pikachu</h2>
+                    <div id="pokemon-id" class="pokemon-id">Pokemon n° 25</div>
+                    <div class="pokemon-stats">
+                        <div class="stat">
+                            <div>Height</div>
+                            <div id="pokemon-height" class="stat-value">4cm</div>
+                        </div>
+                        <div class="stat">
+                            <div>Weight</div>
+                            <div id="pokemon-weight" class="stat-value">60gr</div>
+                        </div>
+                    </div>
+                    <div class="pokemon-type">
+                        Type: <span id="pokemon-type" class="type-badge" style="background-color: #F7D02C;">electric</span>
+                    </div>
+                </div>
+                
+                <div id="loading" class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading Pokémon data...</p>
+                </div>
+                
+                <div id="error" class="error">
+                    Oh no! That Pokemon isn't available...
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="btn-prev" class="btn btn-prev">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button id="btn-random" class="btn btn-random">
+                    <i class="fas fa-question"></i> Random
+                </button>
+                <button id="btn-next" class="btn btn-next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created with the PokeAPI | Pokémon &copy; Nintendo</p>
+        </footer>
     </div>
 
-    <!-- Pokedex Screen -->
-    <div class="pokedex">
-      <div id="pokemonInfo" class="pokemon-card">
-        <p>Click Random to start!</p>
-      </div>
-    </div>
-
-    <!-- Loading + Error -->
-    <div id="loading" class="hidden">🔄 Loading...</div>
-    <div id="error" class="hidden">⚠️ Oh no! That Pokémon isn’t available…</div>
-
-    <!-- Buttons -->
-    <div class="buttons">
-      <button id="prevBtn">⬅️ Prev</button>
-      <button id="randomBtn">🎲 Random</button>
-      <button id="nextBtn">➡️ Next</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </body>
 </html>
