@@ -1,0 +1,2 @@
+Hello Omar 🚀
+This is an example file for Node.js exercise.
