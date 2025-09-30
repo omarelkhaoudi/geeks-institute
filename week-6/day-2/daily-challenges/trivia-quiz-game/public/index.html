@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia Quiz Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>🎯 Trivia Quiz Game</h1>
+    <div id="quiz-box">
+      <p id="question">Loading question...</p>
+      <input type="text" id="answer" placeholder="Type your answer">
+      <button id="submit">Submit</button>
+      <p id="feedback"></p>
+    </div>
+    <div id="score-box" class="hidden">
+      <h2>Your Final Score 🎉</h2>
+      <p id="final-score"></p>
+      <button id="restart">Restart Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    async function loadQuestion() {
+      const res = await fetch("/quiz");
+      const data = await res.json();
+      document.getElementById("question").textContent = data.question;
+    }
+
+    document.getElementById("submit").addEventListener("click", async () => {
+      const answer = document.getElementById("answer").value;
+      const res = await fetch("/quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answer })
+      });
+      const data = await res.json();
+
+      document.getElementById("feedback").textContent = data.message;
+
+      if (data.nextQuestion) {
+        document.getElementById("question").textContent = data.nextQuestion;
+        document.getElementById("answer").value = "";
+      } else if (data.score !== undefined) {
+        document.getElementById("quiz-box").classList.add("hidden");
+        document.getElementById("score-box").classList.remove("hidden");
+        document.getElementById("final-score").textContent = `You scored ${data.score} points!`;
+      }
+    });
+
+    document.getElementById("restart").addEventListener("click", async () => {
+      const res = await fetch("/quiz/score?reset=true");
+      location.reload();
+    });
+
+    loadQuestion();
+  </script>
+</body>
+</html>
