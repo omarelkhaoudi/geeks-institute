@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emoji Greeting App</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #444;
+      display: block;
+      margin: 10px 0 5px;
+      text-align: left;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #74b9ff;
+      box-shadow: 0 0 5px rgba(116, 185, 255, 0.8);
+    }
+
+    button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Emoji Greeting App 🎉</h1>
+    <form action="/greet" method="POST">
+      <label for="name">Enter your name:</label>
+      <input type="text" name="name" id="name" placeholder="Type your name..." required>
+
+      <label for="emoji">Choose an emoji:</label>
+      <select name="emoji" id="emoji">
+        <option value="😀">😀 Happy</option>
+        <option value="🎉">🎉 Party</option>
+        <option value="🌟">🌟 Star</option>
+        <option value="🎈">🎈 Balloon</option>
+        <option value="👋">👋 Hello</option>
+      </select>
+
+      <button type="submit">✨ Greet Me ✨</button>
+    </form>
+  </div>
+</body>
+</html>

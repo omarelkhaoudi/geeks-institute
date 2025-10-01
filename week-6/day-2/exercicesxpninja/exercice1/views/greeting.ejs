@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greeting</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .greeting-box {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="greeting-box">
+    <h1>Hello, <%= name %>! <%= emoji %></h1>
+    <a href="/">🔙 Back</a>
+  </div>
+</body>
+</html>
