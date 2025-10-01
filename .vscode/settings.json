@@ -89,6 +89,17 @@
             "database": "countries_db",
             "username": "postgres",
             "password": "root"
+        },
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "blogdb",
+            "database": "blogdb",
+            "username": "postgres",
+            "password": "root"
         }
     ]
 }
