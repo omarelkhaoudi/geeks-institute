@@ -1,0 +1,6 @@
+body { font-family: Arial; text-align: center; }
+#grid { display: grid; grid-template-columns: repeat(10, 40px); grid-gap: 2px; margin: 20px auto; width: 420px; }
+.cell { width: 40px; height: 40px; border: 1px solid #333; display: flex; align-items: center; justify-content: center; }
+.player1 { background-color: lightblue; }
+.player2 { background-color: lightcoral; }
+.base { border: 2px solid black; }
