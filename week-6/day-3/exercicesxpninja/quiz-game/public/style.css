@@ -1,0 +1,268 @@
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS Variables for easy theming */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-gradient: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+  --error-gradient: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.4);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background particles */
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+body::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+}
+
+body::after {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  bottom: -300px;
+  left: -300px;
+  animation-delay: 10s;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(100px, -100px) rotate(90deg); }
+  50% { transform: translate(-50px, 100px) rotate(180deg); }
+  75% { transform: translate(-100px, -50px) rotate(270deg); }
+}
+
+/* Main container wrapper */
+.app-wrapper {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  letter-spacing: -1px;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 2px 4px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.1),0 8px 16px rgba(0,0,0,0.1),0 0 30px rgba(255,255,255,0.3); }
+  100% { text-shadow: 0 2px 4px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.1),0 8px 16px rgba(0,0,0,0.1),0 0 50px rgba(255,255,255,0.5); }
+}
+
+/* Quiz container with glassmorphism */
+#quiz-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-xl), inset 0 1px 0 0 var(--glass-border);
+  border: 1px solid var(--glass-border);
+  text-align: center;
+  animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative gradient border */
+#quiz-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 30px 30px 0 0;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Question container */
+#questionContainer {
+  font-size: 1.5rem;
+  margin: 30px 0;
+  font-weight: 600;
+  color: #2d3436;
+  line-height: 1.6;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field */
+input {
+  padding: 15px 20px;
+  width: 250px;
+  margin-top: 20px;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  outline: none;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+input:focus {
+  background: white;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102,126,234,0.1), 0 4px 20px rgba(102,126,234,0.2);
+  transform: translateY(-2px);
+}
+
+input::placeholder {
+  color: #a0a0a0;
+}
+
+/* Buttons */
+button {
+  margin-top: 25px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  background: var(--primary-gradient);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.3), 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 7px 25px rgba(102,126,234,0.4), 0 3px 8px rgba(0,0,0,0.15);
+}
+
+button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Answer container */
+#answerContainer {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border-radius: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Result */
+#result {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 20px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#result.correct {
+  background: var(--success-gradient);
+  color: white;
+  animation: successPulse 0.6s ease-in-out;
+}
+
+#result.incorrect {
+  background: var(--error-gradient);
+  color: white;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+/* Score */
+.score-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #667eea;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes successPulse { 0%{transform:scale(0.9);opacity:0;} 50%{transform:scale(1.05);} 100%{transform:scale(1);opacity:1;} }
+@keyframes errorShake {
+  0%,100%{transform:translateX(0);}
+  10%,30%,50%,70%,90%{transform:translateX(-10px);}
+  20%,40%,60%,80%{transform:translateX(10px);}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Quiz App</title>
+  <!-- Lien vers ton CSS externe -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <h1>✨ Ultimate Quiz Challenge ✨</h1>
+    
+    <div id="quiz-container">
+      <!-- Score display -->
+      <div class="score-display">Score: 0</div>
+      
+      <!-- Progress bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 30%;"></div>
+      </div>
+      
+      <!-- Question section -->
+      <div id="questionContainer">
+        What is the capital of France? 🤔
+      </div>
+      
+      <!-- Input section -->
+      <div>
+        <input type="text" placeholder="Enter your answer..." autofocus>
+      </div>
+      
+      <!-- Submit button -->
+      <button type="button">Submit Answer</button>
+      
+      <!-- Answer container (hidden by default) -->
+      <div id="answerContainer" style="display: none;">
+        <strong>Correct Answer:</strong> Paris
+      </div>
+      
+      <!-- Result message -->
+      <div id="result" class="correct" style="display: none;">
+        🎉 Excellent! You got it right!
+      </div>
+    </div>
+  </div>
+</body>
+</html>
