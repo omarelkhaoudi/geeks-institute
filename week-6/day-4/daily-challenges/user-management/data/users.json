@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "omar",
+    "lastName": "el khaoudi",
+    "email": "omarelkhaoudi7@gmail.com",
+    "username": "omarelkhaoudi",
+    "password": "$2b$10$7eHlOS5MjGDsTZLNwjvQNuaTF6yooq.06ieW6R2XNn1fUDzUNVMSu"
+  },
+  {
+    "id": 2,
+    "name": "aymane",
+    "lastName": "karim",
+    "email": "aymane@gmail.com",
+    "username": "aymanekarim",
+    "password": "$2b$10$0HXCxM8Qsrb7ApV51CobS.6pRTnKICw1Ev30UNl7SEmHqXRrNRQ.q"
+  },
+  {
+    "id": 3,
+    "name": "ismail",
+    "lastName": "nejmi",
+    "email": "ismail@gmail.com",
+    "username": "ismailnejmi",
+    "password": "$2b$10$qOaFbrTsFj6RegeE1k8UZ.uwTNpaYYbdx/NHnCgqpWcNk9S6OgARi"
+  }
+]
