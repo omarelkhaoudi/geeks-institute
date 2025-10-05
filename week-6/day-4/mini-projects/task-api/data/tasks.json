@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Finish Express.js homework",
+    "description": "Complete the Task Management API exercise",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "title": "Read Node.js documentation",
+    "description": "Focus on fs module and express.Router usage",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread, and fruits",
+    "completed": false
+  },
+  {
+    "id": 5,
+    "title": "Learn Docker basics",
+    "description": "Go through Docker documentation and tutorials",
+    "completed": false
+  }
+]
