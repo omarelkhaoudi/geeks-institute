@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+form {
+  background-color: #d5ae7f;
+  padding: 20px;
+}
+
+h1 {
+  background-color: #3c3632;
+  color: white;
+  padding: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+div:last-child {
+  background-color: #1b4b4d;
+  color: white;
+  padding: 20px;
+}
