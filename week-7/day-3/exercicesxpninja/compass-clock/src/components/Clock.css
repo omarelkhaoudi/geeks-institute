@@ -1,0 +1,206 @@
+.clock-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Year Display - Top Left */
+.year-display {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Circular Display */
+.circular-display {
+  position: relative;
+  width: 80vmin;
+  height: 80vmin;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+}
+
+.time-marker {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform-origin: center;
+}
+
+.time-marker::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 12px;
+  background: #ffffff;
+}
+
+.time-text {
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #ffffff;
+  font-weight: 300;
+  white-space: nowrap;
+  transform-origin: center;
+}
+
+/* Position each time marker around the circle */
+.time-marker:nth-child(1) { transform: rotate(0deg); }
+.time-marker:nth-child(2) { transform: rotate(8.57deg); }
+.time-marker:nth-child(3) { transform: rotate(17.14deg); }
+.time-marker:nth-child(4) { transform: rotate(25.71deg); }
+.time-marker:nth-child(5) { transform: rotate(34.28deg); }
+.time-marker:nth-child(6) { transform: rotate(42.85deg); }
+.time-marker:nth-child(7) { transform: rotate(51.42deg); }
+.time-marker:nth-child(8) { transform: rotate(60deg); }
+.time-marker:nth-child(9) { transform: rotate(68.57deg); }
+.time-marker:nth-child(10) { transform: rotate(77.14deg); }
+.time-marker:nth-child(11) { transform: rotate(85.71deg); }
+.time-marker:nth-child(12) { transform: rotate(94.28deg); }
+.time-marker:nth-child(13) { transform: rotate(102.85deg); }
+.time-marker:nth-child(14) { transform: rotate(111.42deg); }
+.time-marker:nth-child(15) { transform: rotate(120deg); }
+.time-marker:nth-child(16) { transform: rotate(128.57deg); }
+.time-marker:nth-child(17) { transform: rotate(137.14deg); }
+.time-marker:nth-child(18) { transform: rotate(145.71deg); }
+.time-marker:nth-child(19) { transform: rotate(154.28deg); }
+.time-marker:nth-child(20) { transform: rotate(162.85deg); }
+.time-marker:nth-child(21) { transform: rotate(171.42deg); }
+.time-marker:nth-child(22) { transform: rotate(180deg); }
+.time-marker:nth-child(23) { transform: rotate(188.57deg); }
+.time-marker:nth-child(24) { transform: rotate(197.14deg); }
+.time-marker:nth-child(25) { transform: rotate(205.71deg); }
+.time-marker:nth-child(26) { transform: rotate(214.28deg); }
+.time-marker:nth-child(27) { transform: rotate(222.85deg); }
+.time-marker:nth-child(28) { transform: rotate(231.42deg); }
+.time-marker:nth-child(29) { transform: rotate(240deg); }
+.time-marker:nth-child(30) { transform: rotate(248.57deg); }
+.time-marker:nth-child(31) { transform: rotate(257.14deg); }
+.time-marker:nth-child(32) { transform: rotate(265.71deg); }
+.time-marker:nth-child(33) { transform: rotate(274.28deg); }
+.time-marker:nth-child(34) { transform: rotate(282.85deg); }
+.time-marker:nth-child(35) { transform: rotate(291.42deg); }
+.time-marker:nth-child(36) { transform: rotate(300deg); }
+.time-marker:nth-child(37) { transform: rotate(308.57deg); }
+.time-marker:nth-child(38) { transform: rotate(317.14deg); }
+.time-marker:nth-child(39) { transform: rotate(325.71deg); }
+.time-marker:nth-child(40) { transform: rotate(334.28deg); }
+.time-marker:nth-child(41) { transform: rotate(342.85deg); }
+.time-marker:nth-child(42) { transform: rotate(351.42deg); }
+
+/* Rotate text to be readable */
+.time-text {
+  transform: translateX(-50%) rotate(calc(-1 * var(--rotation, 0deg)));
+}
+
+.time-marker:nth-child(1) .time-text { --rotation: 0deg; }
+.time-marker:nth-child(2) .time-text { --rotation: 8.57deg; }
+.time-marker:nth-child(3) .time-text { --rotation: 17.14deg; }
+.time-marker:nth-child(4) .time-text { --rotation: 25.71deg; }
+.time-marker:nth-child(5) .time-text { --rotation: 34.28deg; }
+.time-marker:nth-child(6) .time-text { --rotation: 42.85deg; }
+.time-marker:nth-child(7) .time-text { --rotation: 51.42deg; }
+.time-marker:nth-child(8) .time-text { --rotation: 60deg; }
+.time-marker:nth-child(9) .time-text { --rotation: 68.57deg; }
+.time-marker:nth-child(10) .time-text { --rotation: 77.14deg; }
+.time-marker:nth-child(11) .time-text { --rotation: 85.71deg; }
+.time-marker:nth-child(12) .time-text { --rotation: 94.28deg; }
+.time-marker:nth-child(13) .time-text { --rotation: 102.85deg; }
+.time-marker:nth-child(14) .time-text { --rotation: 111.42deg; }
+.time-marker:nth-child(15) .time-text { --rotation: 120deg; }
+.time-marker:nth-child(16) .time-text { --rotation: 128.57deg; }
+.time-marker:nth-child(17) .time-text { --rotation: 137.14deg; }
+.time-marker:nth-child(18) .time-text { --rotation: 145.71deg; }
+.time-marker:nth-child(19) .time-text { --rotation: 154.28deg; }
+.time-marker:nth-child(20) .time-text { --rotation: 162.85deg; }
+.time-marker:nth-child(21) .time-text { --rotation: 171.42deg; }
+.time-marker:nth-child(22) .time-text { --rotation: 180deg; }
+.time-marker:nth-child(23) .time-text { --rotation: 188.57deg; }
+.time-marker:nth-child(24) .time-text { --rotation: 197.14deg; }
+.time-marker:nth-child(25) .time-text { --rotation: 205.71deg; }
+.time-marker:nth-child(26) .time-text { --rotation: 214.28deg; }
+.time-marker:nth-child(27) .time-text { --rotation: 222.85deg; }
+.time-marker:nth-child(28) .time-text { --rotation: 231.42deg; }
+.time-marker:nth-child(29) .time-text { --rotation: 240deg; }
+.time-marker:nth-child(30) .time-text { --rotation: 248.57deg; }
+.time-marker:nth-child(31) .time-text { --rotation: 257.14deg; }
+.time-marker:nth-child(32) .time-text { --rotation: 265.71deg; }
+.time-marker:nth-child(33) .time-text { --rotation: 274.28deg; }
+.time-marker:nth-child(34) .time-text { --rotation: 282.85deg; }
+.time-marker:nth-child(35) .time-text { --rotation: 291.42deg; }
+.time-marker:nth-child(36) .time-text { --rotation: 300deg; }
+.time-marker:nth-child(37) .time-text { --rotation: 308.57deg; }
+.time-marker:nth-child(38) .time-text { --rotation: 317.14deg; }
+.time-marker:nth-child(39) .time-text { --rotation: 325.71deg; }
+.time-marker:nth-child(40) .time-text { --rotation: 334.28deg; }
+.time-marker:nth-child(41) .time-text { --rotation: 342.85deg; }
+.time-marker:nth-child(42) .time-text { --rotation: 351.42deg; }
+
+/* Current Time Display */
+.current-time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(10, 10, 10, 0.9);
+  padding: 20px 30px;
+  border-radius: 8px;
+}
+
+.time-digits {
+  font-size: 28px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  font-family: 'Courier New', monospace;
+}
+
+.date-display {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Month Display - Bottom Right */
+.month-display {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Simple minimal design - no extra effects */
+body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0a;
+  overflow: hidden;
+}
