@@ -1,0 +1,86 @@
+/* Container for the whole list */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+/* Individual todo items */
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f1f1;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.todo-item:hover {
+  background: #e0e0ff;
+  transform: scale(1.02);
+}
+
+/* Completed task style */
+.todo-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Button style */
+.todo-item button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-item button:hover {
+  background-color: #e60000;
+}
+
+/* Input container */
+.todo-input {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.todo-input button {
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  background-color: #46dde5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.todo-input button:hover {
+  background-color: #46dde5;
+}
+
+/* Header */
+.app-container h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #46dde5;
+}
