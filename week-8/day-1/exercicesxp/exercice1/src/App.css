@@ -1,0 +1,48 @@
+/* Global reset */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Light theme */
+.content.light {
+  background-color: #f9fafb;
+  color: #111827;
+  min-height: 100vh;
+  text-align: center;
+  padding: 4rem;
+}
+
+/* Dark theme */
+.content.dark {
+  background-color: #111827;
+  color: #f9fafb;
+  min-height: 100vh;
+  text-align: center;
+  padding: 4rem;
+}
+
+/* Button style */
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button colors */
+.theme-btn.light {
+  background: #111827;
+  color: #f9fafb;
+}
+
+.theme-btn.dark {
+  background: #f9fafb;
+  color: #111827;
+}
