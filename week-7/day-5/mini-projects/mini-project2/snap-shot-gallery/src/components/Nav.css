@@ -1,0 +1,74 @@
+/* Navbar container with gradient background */
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Center links */
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 1rem 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Link style */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* Hover underline animation */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #ffeb3b;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffeb3b;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active page (highlighted link) */
+.nav-link.active {
+  color: #ffeb3b;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Background gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
