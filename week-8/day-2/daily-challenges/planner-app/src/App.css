@@ -1,0 +1,180 @@
+/* ===== Global App Container ===== */
+.app-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-container h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #4a90e2;
+}
+
+/* ===== DatePicker ===== */
+input[type="date"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input[type="date"]:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+/* ===== Task Form ===== */
+.task-form,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-form input,
+.task-form textarea,
+form input,
+form textarea {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s, background 0.3s;
+  background: #f9f9f9;
+}
+
+.task-form input:focus,
+.task-form textarea:focus,
+form input:focus,
+form textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+  background: #ffffff;
+}
+
+form button,
+.task-form button {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #4a90e2, #357ab8);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+form button:hover,
+.task-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+  background: linear-gradient(135deg, #357ab8, #4a90e2);
+}
+
+form .flex.justify-end button {
+  padding: 10px 16px;
+}
+
+/* Cancel button style */
+form .flex.justify-end button:first-child {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+form .flex.justify-end button:first-child:hover {
+  background: #e0e0e0;
+}
+
+/* ===== Task List ===== */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+ul li {
+  padding: 12px 16px;
+  background: #f7f9fc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: background 0.3s, transform 0.2s;
+}
+
+ul li:hover {
+  background: #eaf0f7;
+  transform: translateY(-1px);
+}
+
+ul li .font-semibold {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+ul li .text-sm {
+  color: #555;
+}
+
+ul li button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+ul li button:first-child {
+  background: #4a90e2;
+  color: #fff;
+}
+
+ul li button:first-child:hover {
+  background: #357ab8;
+}
+
+ul li button:last-child {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+ul li button:last-child:hover {
+  background: #e04848;
+}
+
+/* ===== Error messages ===== */
+.text-red-600 {
+  color: #e74c3c;
+}
+
+/* ===== Modal Overlay for Form ===== */
+.fixed.inset-0.flex.items-center.justify-center.bg-black.bg-opacity-40.z-50 {
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 500px) {
+  .app-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  form, .task-form {
+    gap: 10px;
+  }
+}
